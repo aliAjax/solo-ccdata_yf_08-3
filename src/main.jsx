@@ -62,7 +62,7 @@ return<div className="dice-wrap">
 results.map(rec=><article className="check-card" key={rec.id}>
 <div className={'verdict '+rec.verdict[0]}><b>{rec.verdict[1]}</b><span>种子 {rec.seed} · DC {rec.dc} · {rec.passed}/{rec.members.length} 通过 · {rec.at}</span></div>
 {rec.members.map((r,i)=><div className={'roll-row '+(r.pass?'pass':'fail')} key={i}>
-<div className="roll-who"><strong>{r.name}</strong><small>d{r.sides}{r.modifier?` ${r.modifier>0?'+':''}${r.modifier}`:''} · {modeLabel(r.mode)}</small></div>
+<div className="roll-who"><strong>{r.name}</strong><small>d{r.die}{r.modifier?` ${r.modifier>0?'+':''}${r.modifier}`:''} · {modeLabel(r.mode)}</small></div>
 <div className="roll-dice">
 {r.raw.map((v,j)=>{const used=(r.mode==='normal')||(r.mode==='advantage'?v===Math.max(...r.raw)&&r.raw.indexOf(v)===j:v===Math.min(...r.raw)&&r.raw.indexOf(v)===j);return<span key={j} className={'die '+(used?'kept':'dropped')} title={used?'计入点数':'舍弃'}>{v}</span>})}
 {r.crit&&<em className="badge crit">暴击</em>}{r.fumble&&<em className="badge fumble">失利</em>}
